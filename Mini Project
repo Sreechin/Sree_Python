@@ -1,0 +1,27 @@
+
+def analyze_text(text: str):
+    # Basic string manipulation
+    #words = text.strip().lower().split()
+    text=text.strip().lower().split()
+#.split() method takes a single string, breaks it apart wherever it finds spaces (by default), and outputs a list of strings.
+
+    word_count={}
+    for word in text:
+        cleaned_word = word.strip('.,!?";:()[]{}')  # Remove punctuation
+        word_count[cleaned_word] = word_count.get(cleaned_word, 0) + 1
+
+    metrics = {
+        "Total Words": len(text),
+        "Unique Words": len(word_count),
+        "frequencies": word_count
+    }
+
+    return metrics
+
+sample_text = (
+    "python is a great programming language. "
+    "Python is versatile and widely used in various fields."
+)
+
+result = analyze_text(sample_text)
+print(result)
